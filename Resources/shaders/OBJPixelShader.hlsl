@@ -12,11 +12,11 @@ float4 main(VSOutput input) : SV_TARGET
 	//shade_color += m_diffuse * light_diffuse;	// ディフューズ項
 	//float4 texcolor = tex.Sample(smp, input.uv);
 	//return float4(texcolor.rgb * shade_color, texcolor.a * m_alpha);
-	// テクスチャマッピング
-	float4 texcolor = tex.Sample(smp,input.uv);
 	//return texcolor;
 	// テクスチャの色は使わず色を数値指定
 	//return float4(1, 1, 1, 1);
+	// テクスチャマッピング
+	float4 texcolor = tex.Sample(smp,input.uv);
 	// シェーディングによる色で描画
-	return input.color;
+	return input.color * texcolor;
 }
